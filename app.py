@@ -1,29 +1,10 @@
 import streamlit as st
 
-'''
-# TaxiFareModel front
-'''
+st.title("🏢 طباعة أدوار المبنى")
 
-import streamlit as st
+floor_count = st.number_input("كم دور تبغى تطبع؟", min_value=1, max_value=100, value=5)
 
-import numpy as np
-import pandas as pd
-
-st.markdown("""# This is a header
-## This is a sub header
-This is text""")
-
-df = pd.DataFrame({
-    'first column': list(range(1, 11)),
-    'second column': np.arange(10, 101, 10)
-})
-
-# this slider allows the user to select a number of lines
-# to display in the dataframe
-# the selected value is returned by st.slider
-line_count = st.slider('Select a line count', 1, 10, 3)
-
-# and used to select the displayed lines
-head_df = df.head(line_count)
-
-head_df
+if st.button("اطبع الأدوار"):
+    st.write("### قائمة الأدوار:")
+    for i in range(1, floor_count + 1):
+        st.write(f"🟫 الدور رقم {i}")
